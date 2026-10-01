@@ -1,0 +1,98 @@
+{
+  "title": "Level 1: The Cyberbullying Dilemma",
+  "cast": {
+    "rafi": { "name": "Rafi (you)", "player": true, "look": { "skin": "#C68B59", "hair": "#1B1410", "hairStyle": "short", "shirt": "#2F6FDB", "accent": "#F4C430" } },
+    "tanvir": { "name": "Tanvir Bhai", "color": "#E8481F", "look": { "skin": "#A86F45", "hair": "#120D0A", "hairStyle": "quiff", "shirt": "#1E1E1E", "accent": "#E8481F" } },
+    "nusrat": { "name": "Nusrat", "look": { "skin": "#D9A273", "hair": "#20140F", "hairStyle": "hijab", "hijab": "#7C5CC4", "shirt": "#F2EAD8", "accent": "#7C5CC4" } },
+    "sakib": { "name": "Sakib", "color": "#1E8E5A", "look": { "skin": "#B57A4B", "hair": "#16100C", "hairStyle": "buzz", "shirt": "#3AA675", "accent": "#3AA675" } },
+    "mim": { "name": "Mim", "color": "#C2378A", "look": { "skin": "#E0AE84", "hair": "#2A1A12", "hairStyle": "long", "shirt": "#E3609B", "accent": "#E3609B" } },
+    "arif": { "name": "Arif", "color": "#7A55D6", "look": { "skin": "#9C6640", "hair": "#0F0B08", "hairStyle": "curly", "shirt": "#F0A23B", "accent": "#F0A23B" } }
+  },
+  "shots": [
+    {
+      "type": "room",
+      "duration": 8,
+      "background": "hall-night",
+      "actor": "rafi",
+      "expression": "neutral",
+      "caption": "11:42 PM · First-year hall",
+      "events": [
+        { "at": 2.2, "do": "notify", "title": "CSE Seniors & Juniors", "text": "Tanvir Bhai sent a photo 📷" },
+        { "at": 4.6, "do": "expression", "value": "curious" },
+        { "at": 5.4, "do": "notify", "title": "CSE Seniors & Juniors", "text": "Sakib: 😂😂😂😂" }
+      ]
+    },
+    {
+      "type": "phone",
+      "duration": 12,
+      "chat": { "title": "CSE Seniors & Juniors", "subtitle": "214 members", "avatar": "group" },
+      "messages": [
+        { "at": 0.8, "from": "tanvir", "meme": true },
+        { "at": 2.4, "from": "tanvir", "text": "😂😂 guess who" },
+        { "at": 4.4, "from": "sakib", "text": "😂😂😂😂" },
+        { "at": 5.9, "from": "arif", "text": "bhai ki eta 💀💀" },
+        { "at": 7.4, "from": "mim", "text": "this is too much..." },
+        { "at": 9.0, "from": "sakib", "text": "send it to the juniors lol" }
+      ],
+      "reactions": { "at": 3.2, "message": 0, "emojis": ["😂", "💀", "😂"], "count": 37 }
+    },
+    {
+      "type": "phone",
+      "duration": 12,
+      "chat": { "title": "Tanvir Bhai", "subtitle": "online", "avatar": "tanvir" },
+      "messages": [
+        { "at": 0.8, "from": "tanvir", "text": "Rafi" },
+        { "at": 2.2, "from": "tanvir", "text": "share this in your batch group" },
+        { "at": 3.8, "from": "tanvir", "text": "make it viral 🔥" },
+        { "at": 6.0, "from": "tanvir", "text": "or forget about senior notes for finals." },
+        { "at": 8.4, "from": "me", "typing": 3 }
+      ]
+    },
+    {
+      "type": "split",
+      "duration": 10,
+      "chat": { "title": "Batch 24 🎓", "subtitle": "86 members", "avatar": "group" },
+      "messages": [
+        { "at": 0.5, "from": "arif", "text": "bro did u see??" },
+        { "at": 2.4, "from": "sakib", "text": "post it here 😂" },
+        { "at": 4.6, "from": "arif", "text": "Rafi u there?" }
+      ],
+      "counter": { "label": "people have seen the photo", "from": 12, "to": 184 },
+      "caption": "Everyone is waiting for you."
+    },
+    {
+      "type": "room",
+      "duration": 13,
+      "background": "girls-hall",
+      "actor": "nusrat",
+      "expression": "smile",
+      "caption": "Meanwhile, in Nusrat's room",
+      "events": [
+        { "at": 1.6, "do": "notify", "title": "Sakib", "text": "reacted 😂 to a photo of you" },
+        { "at": 3.0, "do": "notify", "title": "Unknown number", "text": "is this really u?? 😂" },
+        { "at": 4.0, "do": "expression", "value": "worried" },
+        { "at": 4.4, "do": "notify", "title": "CSE Seniors & Juniors", "text": "12 new messages mention you" },
+        { "at": 6.4, "do": "expression", "value": "sad" },
+        { "at": 8.0, "do": "thought", "text": "Who made this?" },
+        { "at": 10.6, "do": "phone-down" }
+      ]
+    },
+    {
+      "type": "phone",
+      "duration": 10,
+      "chat": { "title": "Tanvir Bhai", "subtitle": "online", "avatar": "tanvir" },
+      "messages": [
+        { "at": 0, "from": "tanvir", "meme": true },
+        { "at": 0, "from": "tanvir", "text": "or forget about senior notes for finals." }
+      ],
+      "forward": { "at": 0.8, "target": "Batch 24 🎓", "others": ["Ammu ❤️", "Hall Room 312"] },
+      "heartbeat": true
+    },
+    {
+      "type": "freeze",
+      "duration": 5,
+      "text": "What will you do?",
+      "sub": "Your choice shapes who you become."
+    }
+  ]
+}

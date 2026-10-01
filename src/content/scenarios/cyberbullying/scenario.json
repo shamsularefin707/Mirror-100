@@ -1,0 +1,161 @@
+{
+  "id": "cyberbullying",
+  "order": 1,
+  "level": 1,
+  "title": "The Cyberbullying Dilemma",
+  "theme": "Peer pressure",
+  "setup": "It's late at night in your first-year hall. Your phone buzzes. It's the department group.",
+  "contentNote": "This scene shows online harassment. The edited image is never shown.",
+  "video": { "type": "scene", "scene": "scene.json" },
+  "questions": [
+    {
+      "id": "q1-pressure",
+      "prompt": "Tanvir Bhai says: share it in your batch group, or forget about senior support for finals. What do you do?",
+      "tag": {
+        "label": "Resisting peer pressure",
+        "strength": "You don't let pressure make your choices for you.",
+        "growth": "Practise saying no, especially when it costs you something."
+      },
+      "options": [
+        {
+          "id": "share",
+          "text": "Share it in the batch group. Senior support really matters for finals.",
+          "years": -5,
+          "shift": "Within an hour, 300 people had seen it. Nusrat skipped her lab exam the next morning."
+        },
+        {
+          "id": "emoji",
+          "text": "Don't share it, but drop a 😂 so the seniors stay on your side.",
+          "years": -5,
+          "shift": "Your emoji told 214 people this was funny. Nusrat saw your name in the reactions."
+        },
+        {
+          "id": "refuse",
+          "text": "Refuse, delete it, and privately tell him spreading edited photos is a crime.",
+          "years": 5,
+          "shift": "The chain stopped with you. Nusrat's batch never saw it from your phone."
+        },
+        {
+          "id": "one-friend",
+          "text": "Forward it to just one close friend and ask what they think.",
+          "years": -5,
+          "shift": "Your friend forwarded it 'just once' too. That is how every viral post starts."
+        }
+      ]
+    },
+    {
+      "id": "q2-bystander",
+      "prompt": "The meme is already in the department group and 40 people have seen it. What's the most responsible next step?",
+      "tag": {
+        "label": "Active bystander",
+        "strength": "You act when you see harm happening.",
+        "growth": "Silence and side-fights both help harm spread. Report it instead."
+      },
+      "options": [
+        {
+          "id": "quiet",
+          "text": "Stay quiet. It's not your business and others will deal with it.",
+          "years": -5,
+          "shift": "Silence looked like agreement. The post stayed up for three days."
+        },
+        {
+          "id": "report",
+          "text": "Report the post and ask the group admin privately to remove it.",
+          "years": 5,
+          "shift": "The admin removed it within the hour. Far fewer people saw it."
+        },
+        {
+          "id": "fight",
+          "text": "Reply in the group calling Tanvir Bhai out with harsh words.",
+          "years": -5,
+          "shift": "The fight got 60 replies, and the meme got more attention than before."
+        },
+        {
+          "id": "expose",
+          "text": "Screenshot it and post it on your story to expose the senior.",
+          "years": -5,
+          "shift": "You meant to help, but now Nusrat's image is on your story too."
+        }
+      ]
+    },
+    {
+      "id": "q3-support",
+      "prompt": "Nusrat hasn't come to class for two days. What do you do?",
+      "tag": {
+        "label": "Supporting the person harmed",
+        "strength": "You reach out to people who are hurting.",
+        "growth": "One kind message can change someone's whole week."
+      },
+      "options": [
+        {
+          "id": "space",
+          "text": "Leave her alone. She probably wants space right now.",
+          "years": -5,
+          "shift": "She felt the whole batch had turned on her. No one checked in."
+        },
+        {
+          "id": "reach-out",
+          "text": "Message her that it wasn't okay, and offer to help her report it.",
+          "years": 5,
+          "shift": "One message made her feel less alone. She reported it the next day."
+        },
+        {
+          "id": "ask-group",
+          "text": "Ask in the class group whether the photo was really her.",
+          "years": -5,
+          "shift": "Your question pulled the meme back into everyone's attention."
+        },
+        {
+          "id": "delete-accounts",
+          "text": "Tell her to delete her social media so it all goes away.",
+          "years": -5,
+          "shift": "She vanished from her own online life while the person who did it carried on."
+        }
+      ]
+    },
+    {
+      "id": "q4-firm",
+      "prompt": "Tanvir Bhai finds out you refused. He messages: \"Don't expect any help from us.\" What do you do?",
+      "tag": {
+        "label": "Standing firm without revenge",
+        "strength": "You hold your ground without hitting back.",
+        "growth": "Revenge and public shaming restart the cycle of harm."
+      },
+      "options": [
+        {
+          "id": "give-in",
+          "text": "Apologise and share the meme after all, just to fix things.",
+          "years": -5,
+          "shift": "You got the notes back. Nusrat got another wave of cruel messages."
+        },
+        {
+          "id": "stand-firm",
+          "text": "Keep your decision, study with classmates, and tell your adviser if it continues.",
+          "years": 5,
+          "shift": "Two classmates said they had refused too. You weren't alone."
+        },
+        {
+          "id": "revenge-meme",
+          "text": "Make a meme about Tanvir Bhai to get back at him.",
+          "years": -5,
+          "shift": "Now there were two victims, and the cycle kept going."
+        },
+        {
+          "id": "public-shame",
+          "text": "Post the whole story publicly with his name to shame him.",
+          "years": -5,
+          "shift": "It went viral, and it dragged Nusrat's name back into it too."
+        }
+      ]
+    }
+  ],
+  "help": {
+    "title": "If this happens to you or a friend",
+    "lines": [
+      "Save evidence privately. Don't forward it.",
+      "Report the post on the platform.",
+      "Talk to someone you trust: a friend, teacher, adviser or proctor.",
+      "In Bangladesh: call 999 in an emergency, or 109 (helpline for violence against women and children)."
+    ]
+  }
+}

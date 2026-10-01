@@ -1,0 +1,234 @@
+/* ---------- player shell ---------- */
+
+.player { width: 100%; }
+.stage-wrap {
+  position: relative;
+  width: min(100%, calc(min(68dvh, 640px) * 9 / 16));
+  aspect-ratio: 9 / 16;
+  margin: 0 auto;
+  border-radius: 22px;
+  overflow: hidden;
+  background: #0B1022;
+  box-shadow: 0 18px 40px rgb(18 25 51 / 30%);
+}
+.stage {
+  position: absolute;
+  left: 50%; top: 50%;
+  transform-origin: center;
+  overflow: hidden;
+  font-family: var(--font-body);
+  color: var(--ink);
+  user-select: none;
+}
+.big-play {
+  position: absolute; inset: 0; margin: auto;
+  width: 84px; height: 84px;
+  border-radius: 50%;
+  border: 0;
+  background: var(--orange);
+  color: #fff;
+  font-size: 2rem;
+  padding-left: 8px;
+  cursor: pointer;
+  box-shadow: 0 0 0 10px rgb(232 72 31 / 25%);
+  z-index: 5;
+}
+.player.has-started .big-play { display: none; }
+.player:not(.has-started) .stage { filter: brightness(.55); }
+
+.controls {
+  display: flex; align-items: center; gap: 10px;
+  width: min(100%, 420px);
+  margin: 10px auto 0;
+}
+.ctl {
+  flex: none;
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  border: 0;
+  background: var(--ink); color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.ctl-seek { flex: 1; accent-color: var(--orange); min-width: 0; }
+.ctl-time { font-size: .8rem; color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.player-mp4 video { width: 100%; border-radius: 16px; background: #000; }
+
+/* ---------- shots (all sizes are in 360x640 stage units) ---------- */
+
+.shot { position: absolute; inset: 0; overflow: hidden; visibility: hidden; }
+.shot .layer, .shot .layer svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.shot-room { background: #1C2547; }
+.actor { position: absolute; left: 50px; bottom: 120px; width: 260px; }
+.actor svg { width: 100%; height: auto; display: block; overflow: visible; }
+.dim { position: absolute; inset: 0; background: #050817; opacity: 0; pointer-events: none; }
+
+.caption-chip {
+  position: absolute; left: 16px; top: 16px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgb(255 255 255 / 14%);
+  color: #fff;
+  font: 600 13px/1.2 var(--font-display);
+  backdrop-filter: blur(4px);
+}
+.notification {
+  position: absolute; left: 16px; right: 16px; top: 64px;
+  display: flex; gap: 10px; align-items: center;
+  padding: 10px 12px;
+  border-radius: 16px;
+  background: rgb(250 247 242 / 96%);
+  box-shadow: 0 8px 20px rgb(0 0 0 / 35%);
+  font-size: 13px; line-height: 1.3;
+  visibility: hidden;
+}
+.notification b { display: block; font-family: var(--font-display); font-size: 12px; }
+.notification-app { width: 30px; height: 30px; flex: none; display: grid; place-items: center; border-radius: 8px; background: #1E8E5A; font-size: 15px; }
+.thought {
+  position: absolute; right: 18px; top: 250px;
+  max-width: 150px;
+  padding: 10px 14px;
+  border-radius: 20px;
+  background: #fff;
+  font: 700 16px/1.25 var(--font-display);
+  visibility: hidden;
+}
+.thought::after {
+  content: ''; position: absolute; left: 14px; bottom: -14px;
+  width: 14px; height: 14px; border-radius: 50%; background: #fff;
+}
+
+/* chat UI (a generic messenger, not any real brand) */
+.shot-phone { background: #ECE6DB; }
+.chat { position: absolute; inset: 0; display: flex; flex-direction: column; }
+.chat-head {
+  display: flex; align-items: center; gap: 10px;
+  padding: 14px 12px;
+  background: #1F4FA3; color: #fff;
+  flex: none;
+}
+.chat-back { font-size: 26px; line-height: 1; opacity: .9; }
+.chat-title b { display: block; font: 700 15px/1.2 var(--font-display); }
+.chat-title small { font-size: 12px; opacity: .8; }
+.avatar { width: 36px; height: 36px; border-radius: 50%; overflow: hidden; flex: none; background: #DCE6FF; }
+.avatar svg { width: 100%; height: 100%; display: block; }
+.chat-body {
+  flex: 1;
+  overflow: hidden;
+  padding: 12px 10px;
+  display: flex; flex-direction: column; gap: 8px;
+  background-color: #ECE6DB;
+  background-image: radial-gradient(rgb(31 79 163 / 8%) 1.5px, transparent 1.5px);
+  background-size: 18px 18px;
+}
+.msg { display: flex; gap: 6px; align-items: flex-end; visibility: hidden; flex: none; }
+.msg-me { justify-content: flex-end; }
+.msg-avatar { width: 26px; height: 26px; border-radius: 50%; overflow: hidden; flex: none; }
+.msg-avatar svg { width: 100%; height: 100%; display: block; }
+.bubble {
+  position: relative;
+  max-width: 240px;
+  padding: 7px 11px;
+  border-radius: 14px 14px 14px 4px;
+  background: #fff;
+  font-size: 14.5px; line-height: 1.35;
+  box-shadow: 0 1px 1px rgb(0 0 0 / 8%);
+}
+.msg-me .bubble { background: #D6F2C9; border-radius: 14px 14px 4px 14px; }
+.sender { display: block; font: 700 12px/1.3 var(--font-display); margin-bottom: 1px; }
+.reactions:empty { display: none; }
+.reactions {
+  position: absolute; right: 8px; bottom: -14px;
+  padding: 1px 7px;
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: 0 1px 4px rgb(0 0 0 / 18%);
+  font-size: 12px;
+}
+.meme { width: 200px; }
+.meme-blur {
+  height: 118px;
+  border-radius: 10px;
+  display: flex; justify-content: center; align-items: center; gap: 6px;
+  font-size: 30px;
+  background:
+    radial-gradient(circle at 35% 40%, #D9A273 0 22%, transparent 23%),
+    radial-gradient(circle at 70% 60%, #7C5CC4 0 26%, transparent 27%),
+    linear-gradient(135deg, #F4C430, #E3609B);
+  filter: blur(0);
+  position: relative;
+  overflow: hidden;
+}
+.meme-blur::before {
+  content: ''; position: absolute; inset: 0;
+  backdrop-filter: blur(10px);
+  background: rgb(255 255 255 / 12%);
+}
+.meme-blur span { position: relative; }
+.meme-label { font-size: 11px; color: var(--muted); margin-top: 4px; }
+.typing { display: inline-flex; gap: 4px; padding: 4px 2px; }
+.typing i { width: 7px; height: 7px; border-radius: 50%; background: #6B7A6A; display: block; }
+.chat-input {
+  display: flex; gap: 8px; align-items: center;
+  padding: 10px;
+  background: #ECE6DB;
+  flex: none;
+}
+.chat-input span:first-child { flex: 1; padding: 10px 14px; border-radius: 999px; background: #fff; color: #9AA0AC; font-size: 14px; }
+.chat-send { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; background: #1F4FA3; color: #fff; }
+
+.forward-sheet {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  padding: 10px 16px 18px;
+  border-radius: 20px 20px 0 0;
+  background: #fff;
+  box-shadow: 0 -10px 30px rgb(0 0 0 / 25%);
+  visibility: hidden;
+}
+.sheet-handle { width: 40px; height: 4px; border-radius: 4px; background: #D0D4DC; margin: 0 auto 10px; }
+.sheet-title { display: block; font: 700 15px/1.2 var(--font-display); margin-bottom: 8px; }
+.sheet-row { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid #EEF0F4; font-size: 14.5px; }
+.sheet-row span:nth-child(2) { flex: 1; }
+.check { width: 22px; height: 22px; border-radius: 50%; border: 2px solid #C8CDD6; display: grid; place-items: center; color: #fff; font-size: 13px; font-weight: 700; }
+.sheet-send {
+  margin-top: 14px;
+  padding: 12px;
+  border-radius: 999px;
+  background: #E8481F;
+  color: #fff;
+  text-align: center;
+  font: 700 15px/1 var(--font-display);
+}
+.finger { position: absolute; right: 140px; bottom: -14px; font-size: 44px; visibility: hidden; filter: drop-shadow(0 4px 6px rgb(0 0 0 / 30%)); }
+.vignette {
+  position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 45%, rgb(194 55 43 / 70%) 100%);
+  opacity: 0;
+}
+
+/* split */
+.shot-split { background: #121933; }
+.split-top { position: absolute; left: 0; right: 0; top: 0; height: 330px; }
+.chat-compact .chat-body { padding-top: 10px; }
+.split-bottom {
+  position: absolute; left: 0; right: 0; top: 330px; bottom: 0;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  color: #fff; text-align: center;
+  padding: 0 20px;
+}
+.counter-eye { font-size: 30px; }
+.counter-num { font: 800 64px/1 var(--font-display); color: #FF7A5C; font-variant-numeric: tabular-nums; }
+.counter-label { font-size: 14px; opacity: .8; }
+.counter-faces { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px; margin-top: 14px; max-width: 220px; }
+.counter-faces .avatar { width: 30px; height: 30px; visibility: hidden; border: 2px solid #121933; }
+.split-caption { margin-top: 16px; font: 700 18px/1.3 var(--font-display); visibility: hidden; }
+
+/* freeze */
+.shot-freeze {
+  background: radial-gradient(circle at 50% 40%, #233166, #0A0F24 70%);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  color: #fff; text-align: center; padding: 0 24px;
+}
+.freeze-mirror { width: 190px; height: auto; margin-bottom: 26px; visibility: hidden; }
+.freeze-text { font: 800 30px/1.15 var(--font-display); margin: 0 0 8px; visibility: hidden; }
+.freeze-sub { font-size: 15px; opacity: .8; visibility: hidden; }
